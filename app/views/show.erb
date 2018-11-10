@@ -4,4 +4,8 @@
 
 <a href="/recipes">Home</a>
 <a href="/recipes/<%= @recipe.id %>/edit">Edit Recipe</a>
-<a href="/recipes/<%= @recipe.id %>/delete">Delete Recipe</a>
+<form method="/recipes/<%= @recipe.id %>/delete" action="POST">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete">
+</form>
+  <a href="/recipes/<%= @recipe.id %>/delete">Delete Recipe</a>
