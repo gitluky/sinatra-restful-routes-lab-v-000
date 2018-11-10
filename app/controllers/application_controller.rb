@@ -13,11 +13,6 @@ class ApplicationController < Sinatra::Base
     erb :new
   end
 
-  get '/recipes/:id' do
-    @recipe = Recipe.find_by(id: params[:id])
-    erb :show
-  end
-
   post '/recipes' do
     @recipe = Recipe.new(name: params[:name], ingredients: params[:ingredients], cook_time: params[:cook_time])
     if @recipe.save
@@ -43,6 +38,11 @@ class ApplicationController < Sinatra::Base
     recipe = Reciper.find_by(id: params[:id])
     recipe.delete
     redirect to "/recipes"
+  end
+
+  get '/recipes/:id' do
+    @recipe = Recipe.find_by(id: params[:id])
+    erb :show
   end
 
 end
